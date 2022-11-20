@@ -9,6 +9,11 @@
   },
   "author": "RainyXeon",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RainyXeon/kazagumo-deezer.git"
+  },
+  "homepage": "https://github.com/RainyXeon/kazagumo-deezer#readme",
   "devDependencies": {
     "@types/node": "^18.11.9",
     "dotenv": "^16.0.3",
