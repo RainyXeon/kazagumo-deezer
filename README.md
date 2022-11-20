@@ -13,7 +13,7 @@ Support source:
 - https://www.deezer.com/us/album/103248
 ```
 How to
-```
+```js
 const { Kazagumo } = require('kazagumo');
 const Deezer = require('kazagumo-deezer');
 
