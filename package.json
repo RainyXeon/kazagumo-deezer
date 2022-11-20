@@ -13,6 +13,9 @@
     "type": "git",
     "url": "git+https://github.com/RainyXeon/kazagumo-deezer.git"
   },
+  "files": [
+    "dist"
+  ],
   "homepage": "https://github.com/RainyXeon/kazagumo-deezer#readme",
   "devDependencies": {
     "@types/node": "^18.11.9",
