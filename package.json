@@ -2,7 +2,7 @@
   "name": "kazagumo-deezer",
   "version": "1.0.0",
   "description": "A plugin that allows you to play music on deezer",
-  "main": "index.js",
+  "main": "dist/index.js",
   "type": "module",
   "scripts": {
     "build": "tsc"
