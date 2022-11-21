@@ -30,5 +30,5 @@ const kazagumo = new Kazagumo(
 );
 
 kazagumo.search(`https://www.deezer.com/us/playlist/53362031`); // track, album, playlist
-kazagumo.search('mirror heart', { engine: 'deezer' }); // search track using spotify
+kazagumo.search('mirror heart', { engine: 'deezer' }); // search track using deezer
 ```
