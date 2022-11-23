@@ -18,9 +18,8 @@ const axios_1 = __importDefault(require("axios"));
 const API_URL = "https://api.deezer.com/";
 const REGEX = /^https?:\/\/(?:www\.)?deezer\.com\/[a-z]+\/(track|album|playlist)\/(\d+)$/;
 class KazagumoPlugin extends kazagumo_1.KazagumoPlugin {
-    constructor(deezerOptions) {
+    constructor() {
         super();
-        this.options = deezerOptions;
         this.methods = {
             track: this.getTrack.bind(this),
             album: this.getAlbum.bind(this),
@@ -72,7 +71,8 @@ class KazagumoPlugin extends kazagumo_1.KazagumoPlugin {
     }
     searchTrack(query, requester) {
         return __awaiter(this, void 0, void 0, function* () {
-            const res = yield axios_1.default.get(`${API_URL}/search/track?q=${decodeURIComponent(query)}`);
+            const res = yield axios_1.default.get(`${API_URL}/search/track?q=${decodeURIComponent(query)}`)
+                .catch((e) => { throw new Error(e); });
             return {
                 tracks: res.data.data.map((track) => this.buildKazagumoTrack(track, requester)),
             };
@@ -80,13 +80,15 @@ class KazagumoPlugin extends kazagumo_1.KazagumoPlugin {
     }
     getTrack(id, requester) {
         return __awaiter(this, void 0, void 0, function* () {
-            const track = yield axios_1.default.get(`${API_URL}/track/${id}/`);
+            const track = yield axios_1.default.get(`${API_URL}/track/${id}/`)
+                .catch((e) => { throw new Error(e); });
             return { tracks: [this.buildKazagumoTrack(track.data, requester)] };
         });
     }
     getAlbum(id, requester) {
         return __awaiter(this, void 0, void 0, function* () {
-            const album = yield axios_1.default.get(`${API_URL}/album/${id}`);
+            const album = yield axios_1.default.get(`${API_URL}/album/${id}`)
+                .catch((e) => { throw new Error(e); });
             const tracks = album.data.tracks.data
                 .filter(this.filterNullOrUndefined)
                 .map((track) => this.buildKazagumoTrack(track, requester));
@@ -95,7 +97,8 @@ class KazagumoPlugin extends kazagumo_1.KazagumoPlugin {
     }
     getPlaylist(id, requester) {
         return __awaiter(this, void 0, void 0, function* () {
-            const playlist = yield axios_1.default.get(`${API_URL}/playlist/${id}?limit=${this.options.playlistLimit}`);
+            const playlist = yield axios_1.default.get(`${API_URL}/playlist/${id}`)
+                .catch((e) => { throw new Error(e); });
             const tracks = playlist.data.tracks.data
                 .filter(this.filterNullOrUndefined)
                 .map((track) => this.buildKazagumoTrack(track, requester));
